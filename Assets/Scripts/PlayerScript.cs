@@ -14,5 +14,6 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         
+        rigidbody.AddForce(0, 0, 1000f * Time.deltaTime);
     }
 }

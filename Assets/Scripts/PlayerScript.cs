@@ -11,69 +11,45 @@ public class PlayerScript : MonoBehaviour
     public float minX = -4.45f;
     public float maxX = 4.45f;
 
-    void Start()
-    {
-        // Nothing needed here yet
-    }
-
     void Update()
     {
-        // =====================================
-        // 1. AUTOMATIC FORWARD MOVEMENT
-        // =====================================
+        // Player position
+        Vector3 playerPos = transform.position;
 
-        transform.Translate(
-            Vector3.forward * forwardSpeed * Time.deltaTime,
-            Space.World
-        );
+        // Automatically move forward
+        playerPos.z += forwardSpeed * Time.deltaTime;
 
-
-        // =====================================
-        // 2. LEFT / RIGHT INPUT
-        // =====================================
-
+        // Left / Right input
         float horizontalInput = 0f;
 
-        // Move RIGHT
         if (Keyboard.current.rightArrowKey.isPressed ||
             Keyboard.current.dKey.isPressed)
         {
             horizontalInput = 1f;
         }
 
-        // Move LEFT
         if (Keyboard.current.leftArrowKey.isPressed ||
             Keyboard.current.aKey.isPressed)
         {
             horizontalInput = -1f;
         }
 
+        // Move left/right
+        playerPos.x += horizontalInput * horizontalSpeed * Time.deltaTime;
 
-        // =====================================
-        // 3. HORIZONTAL MOVEMENT
-        // =====================================
+        // Left boundary
+        if (playerPos.x < minX)
+        {
+            playerPos.x = minX;
+        }
 
-        transform.Translate(
-            Vector3.right *
-            horizontalInput *
-            horizontalSpeed *
-            Time.deltaTime,
-            Space.World
-        );
+        // Right boundary
+        if (playerPos.x > maxX)
+        {
+            playerPos.x = maxX;
+        }
 
-
-        // =====================================
-        // 4. KEEP PLAYER INSIDE Ground
-        // =====================================
-
-        Vector3 playerPosition = transform.position;
-
-        playerPosition.x = Mathf.Clamp(
-            playerPosition.x,
-            minX,
-            maxX
-        );
-
-        transform.position = playerPosition;
+        // Apply final position
+        transform.position = playerPos;
     }
 }

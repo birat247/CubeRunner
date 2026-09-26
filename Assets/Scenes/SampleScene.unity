@@ -970,6 +970,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6569450384358148898, guid: e70d3173f5bb5ab42b48adc68a687de0, type: 3}
   m_PrefabInstance: {fileID: 7888331692051771743}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1126277393 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5952555592974856764, guid: e70d3173f5bb5ab42b48adc68a687de0, type: 3}
+  m_PrefabInstance: {fileID: 7888331692051771743}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126277387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a1ff6ba38440f48a7cee34fe5870e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerScript
 --- !u!114 &1126277394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -982,6 +993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63a74e15c72b2b438bb867a0e14b810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCollision
+  playerScript: {fileID: 1126277393}
 --- !u!1001 &1172376925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1503,6 +1515,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4550026562144040068, guid: 32d080e2fc2e33247885ecbde7bc7659, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8385448123084800518, guid: 32d080e2fc2e33247885ecbde7bc7659, type: 3}
       propertyPath: m_Name
       value: Ground

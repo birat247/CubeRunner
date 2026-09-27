@@ -11,4 +11,12 @@ public class PlayerCollision : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Obstacles")
+        {
+            playerScript.enabled = false;
+        }
+    }
 }

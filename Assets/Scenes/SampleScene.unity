@@ -92840,6 +92840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCollision
   playerScript: {fileID: 1126277393}
+  score: {fileID: 1084190685}
 --- !u!4 &1129448216 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2466770888584601742, guid: f13e4d6116e5e4843a378fbbf6c8d2c2, type: 3}

@@ -7,15 +7,15 @@ public class Score : MonoBehaviour
 {
     public Text scoreText;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    int myScore = 0;
 
-    }
-
-    // Update is called once per frame
     void Update()
     {
+        scoreText.text = myScore.ToString();
+    }
 
+    public void AddScore(int score)
+    {
+        myScore = myScore + score;
     }
 }

@@ -1,17 +1,13 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject gameOverPanel; 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public GameObject gameOverPanel;
+    public void GameOver()
     {
-        
-    }
+        gameOverPanel.SetActive(true);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

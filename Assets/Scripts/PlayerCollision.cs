@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;  
 using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
     public PlayerScript playerScript;
     public Score score;
+    public GameController gameController;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,6 +22,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Obstacles")
         {
+            gameController.GameOver();
             playerScript.enabled = false;
         }
     }

@@ -1,7 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
+using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.EnhancedTouch;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -12,20 +16,21 @@ public class GameController : MonoBehaviour
     {
         gameOverPanel.SetActive(false);
         tapToStart.SetActive(true);
-        PauseGame(); 
+        PauseGame();
     }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        // New Input System - detect left mouse click
+        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
-           StartGame();
+            StartGame();
         }
     }
 
     public void GameOver()
     {
         gameOverPanel.SetActive(true);
-
     }
 
     public void Restart()
@@ -37,6 +42,7 @@ public class GameController : MonoBehaviour
     {
         Application.Quit();
     }
+
     public void PauseGame()
     {
         Time.timeScale = 0f;
@@ -47,4 +53,4 @@ public class GameController : MonoBehaviour
         tapToStart.SetActive(false);
         Time.timeScale = 1f;
     }
-}
+} 

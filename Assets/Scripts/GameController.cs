@@ -11,11 +11,13 @@ public class GameController : MonoBehaviour
 {
     public GameObject gameOverPanel;
     public GameObject tapToStart;
+    public GameObject scoreText;
 
     public void Start()
     {
         gameOverPanel.SetActive(false);
         tapToStart.SetActive(true);
+        scoreText.SetActive(false);
         PauseGame();
     }
 
@@ -30,6 +32,7 @@ public class GameController : MonoBehaviour
 
     public void GameOver()
     {
+        scoreText.SetActive(false);
         gameOverPanel.SetActive(true);
     }
 
@@ -50,6 +53,7 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
+        scoreText.SetActive(true);
         tapToStart.SetActive(false);
         Time.timeScale = 1f;
     }

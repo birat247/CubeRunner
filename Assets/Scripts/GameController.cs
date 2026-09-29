@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour
 
     public void QuitGame()
     {
+        scoreText.SetActive(false);
         Application.Quit();
     }
 

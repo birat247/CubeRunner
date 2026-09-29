@@ -65507,7 +65507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &789107818
 RectTransform:
   m_ObjectHideFlags: 0
@@ -75883,6 +75883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameController
   gameOverPanel: {fileID: 789107817}
   tapToStart: {fileID: 1236683132}
+  scoreText: {fileID: 1084190681}
 --- !u!4 &921734888
 Transform:
   m_ObjectHideFlags: 0
@@ -102241,13 +102242,14 @@ GameObject:
   - component: {fileID: 1236683133}
   - component: {fileID: 1236683135}
   - component: {fileID: 1236683134}
+  - component: {fileID: 1236683136}
   m_Layer: 5
   m_Name: TapToStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1236683133
 RectTransform:
   m_ObjectHideFlags: 0
@@ -102311,6 +102313,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1236683132}
   m_CullTransparentMesh: 1
+--- !u!95 &1236683136
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236683132}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e0c6ad6e08f578b42868b5b1a540d166, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &1237083546 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9034026081680030437, guid: 9ae37c2272ab65b4c84ca658a29e71c2, type: 3}

@@ -93579,6 +93579,12 @@ MonoBehaviour:
   score: {fileID: 1084190685}
   gameController: {fileID: 921734887}
   audioSource: {fileID: 1126277399}
+  audioSource1: {fileID: 1126277400}
+--- !u!54 &1126277395 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 6074398748469304851, guid: e70d3173f5bb5ab42b48adc68a687de0, type: 3}
+  m_PrefabInstance: {fileID: 7888331692051771743}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &1126277399
 AudioSource:
   m_ObjectHideFlags: 0
@@ -176762,6 +176768,10 @@ PrefabInstance:
       propertyPath: minX
       value: -4.4
       objectReference: {fileID: 0}
+    - target: {fileID: 5952555592974856764, guid: e70d3173f5bb5ab42b48adc68a687de0, type: 3}
+      propertyPath: rigidbody
+      value: 
+      objectReference: {fileID: 1126277395}
     - target: {fileID: 5952555592974856764, guid: e70d3173f5bb5ab42b48adc68a687de0, type: 3}
       propertyPath: forwardSpeed
       value: 8

@@ -1,55 +1,40 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour
 {
-    [Header("Movement")]
-    public float forwardSpeed = 5f;
-    public float horizontalSpeed = 5f;
+    public Rigidbody rigidbody;
+    public float force = 1000f;
+    public float speed = 10f;
+    public float maxX;
+    public float minX;
 
-    [Header("Ground Boundaries")]
-    public float minX = -4.45f;
-    public float maxX = 4.45f;
+    // Start is called before the first frame update
+    void Start()
+    {
 
+    }
+
+    // Update is called once per frame
     void Update()
     {
-        // Player position
         Vector3 playerPos = transform.position;
-
-        // Automatically move forward
-        playerPos.z += forwardSpeed * Time.deltaTime;
-
-        // Left / Right input
-        float horizontalInput = 0f;
-
-        if (Keyboard.current.rightArrowKey.isPressed ||
-            Keyboard.current.dKey.isPressed)
-        {
-            horizontalInput = 1f;
-        }
-
-        if (Keyboard.current.leftArrowKey.isPressed ||
-            Keyboard.current.aKey.isPressed)
-        {
-            horizontalInput = -1f;
-        }
-
-        // Move left/right
-        playerPos.x += horizontalInput * horizontalSpeed * Time.deltaTime;
-
-        // Left boundary
-        if (playerPos.x < minX)
-        {
-            playerPos.x = minX;
-        }
-
-        // Right boundary
-        if (playerPos.x > maxX)
-        {
-            playerPos.x = maxX;
-        }
-
-        // Apply final position
+        playerPos.x = Mathf.Clamp(playerPos.x, minX, maxX);
         transform.position = playerPos;
+
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        {
+            transform.position = transform.position + new Vector3(speed * Time.deltaTime, 0, 0);
+        }
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
+            transform.position = transform.position - new Vector3(speed * Time.deltaTime, 0, 0);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        rigidbody.AddForce(0, 0, force * Time.deltaTime);
     }
 }

@@ -8,6 +8,7 @@ public class PlayerCollision : MonoBehaviour
     public PlayerScript playerScript;
     public Score score;
     public GameController gameController;
+    public AudioSource audioSource;
 
     private void OnTriggerEnter(Collider other)
     {

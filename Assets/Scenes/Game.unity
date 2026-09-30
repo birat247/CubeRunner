@@ -93578,6 +93578,7 @@ MonoBehaviour:
   playerScript: {fileID: 1126277393}
   score: {fileID: 1084190685}
   gameController: {fileID: 921734887}
+  audioSource: {fileID: 1126277399}
 --- !u!82 &1126277399
 AudioSource:
   m_ObjectHideFlags: 0

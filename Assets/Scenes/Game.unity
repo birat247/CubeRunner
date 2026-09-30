@@ -176579,6 +176579,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
+    - target: {fileID: 6074398748469304851, guid: e70d3173f5bb5ab42b48adc68a687de0, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6569450384358148898, guid: e70d3173f5bb5ab42b48adc68a687de0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

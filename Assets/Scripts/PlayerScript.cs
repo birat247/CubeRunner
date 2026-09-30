@@ -1,40 +1,55 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour
 {
-    public Rigidbody rigidbody;
-    public float force = 1000f;
-    public float speed = 10f;
-    public float maxX;
-    public float minX;
+    public Rigidbody rb;
 
-    // Start is called before the first frame update
-    void Start()
+    public float forwardSpeed = 10f;
+    public float sidewaysSpeed = 8f;
+
+    public float maxX = 4f;
+    public float minX = -4f;
+
+    private float horizontalInput;
+
+    private void Update()
     {
+        horizontalInput = 0f;
 
-    }
+        if (Keyboard.current == null)
+            return;
 
-    // Update is called once per frame
-    void Update()
-    {
-        Vector3 playerPos = transform.position;
-        playerPos.x = Mathf.Clamp(playerPos.x, minX, maxX);
-        transform.position = playerPos;
-
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        if (Keyboard.current.rightArrowKey.isPressed ||
+            Keyboard.current.dKey.isPressed)
         {
-            transform.position = transform.position + new Vector3(speed * Time.deltaTime, 0, 0);
+            horizontalInput = 1f;
         }
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+
+        if (Keyboard.current.leftArrowKey.isPressed ||
+            Keyboard.current.aKey.isPressed)
         {
-            transform.position = transform.position - new Vector3(speed * Time.deltaTime, 0, 0);
+            horizontalInput = -1f;
         }
     }
 
     private void FixedUpdate()
     {
-        rigidbody.AddForce(0, 0, force * Time.deltaTime);
+        if (rb == null)
+            return;
+
+        Vector3 newPosition = rb.position;
+
+        newPosition.z += forwardSpeed * Time.fixedDeltaTime;
+
+        newPosition.x +=
+            horizontalInput *
+            sidewaysSpeed *
+            Time.fixedDeltaTime;
+
+        newPosition.x =
+            Mathf.Clamp(newPosition.x, minX, maxX);
+
+        rb.MovePosition(newPosition);
     }
 }

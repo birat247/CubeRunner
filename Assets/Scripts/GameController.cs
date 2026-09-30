@@ -1,61 +1,74 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject gameOverPanel;
+    public GameObject gameOverCanvas;
     public GameObject tapToStart;
     public GameObject scoreText;
 
-    public void Start()
+    private bool gameStarted = false;
+    private bool gameEnded = false;
+
+    private void Start()
     {
-        gameOverPanel.SetActive(false);
+        Time.timeScale = 0f;
+
+        gameOverCanvas.SetActive(false);
         tapToStart.SetActive(true);
         scoreText.SetActive(false);
-        PauseGame();
     }
 
     private void Update()
     {
-        // New Input System - detect left mouse click
-        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        if (!gameStarted && !gameEnded && Input.GetMouseButtonDown(0))
+        {
+            StartGame();
+        }
+
+        if (!gameStarted && !gameEnded && Input.GetKeyDown(KeyCode.Space))
         {
             StartGame();
         }
     }
 
+    public void StartGame()
+    {
+        gameStarted = true;
+
+        tapToStart.SetActive(false);
+        scoreText.SetActive(true);
+
+        Time.timeScale = 1f;
+    }
+
     public void GameOver()
     {
+        if (gameEnded)
+            return;
+
+        gameEnded = true;
+
+        Debug.Log("GAME OVER CALLED");
+
+        // Show game over UI
+        gameOverCanvas.SetActive(true);
+
+        // Hide normal score
         scoreText.SetActive(false);
-        gameOverPanel.SetActive(true);
+
+        // Stop game
+        Time.timeScale = 0f;
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene("Game");
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void QuitGame()
     {
-        scoreText.SetActive(false);
         Application.Quit();
     }
-
-    public void PauseGame()
-    {
-        Time.timeScale = 0f;
-    }
-
-    public void StartGame()
-    {
-        scoreText.SetActive(true);
-        tapToStart.SetActive(false);
-        Time.timeScale = 1f;
-    }
-} 
+}

@@ -1,23 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
     public Transform playerTransform;
-    public float offSet;
+    public float zOffset = -7f;
 
-    // Start is called before the first frame update
-    void Start()
+    private void LateUpdate()
     {
+        if (playerTransform == null)
+            return;
 
-    }
+        Vector3 cameraPosition = transform.position;
 
-    // Update is called once per frame
-    void Update()
-    {
-        Vector3 cameraPos = transform.position;
-        cameraPos.z = playerTransform.position.z + offSet;
-        transform.position = cameraPos;
+        cameraPosition.z =
+            playerTransform.position.z + zOffset;
+
+        transform.position = cameraPosition;
     }
 }

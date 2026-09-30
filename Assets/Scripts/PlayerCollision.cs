@@ -9,11 +9,12 @@ public class PlayerCollision : MonoBehaviour
     public Score score;
     public GameController gameController;
     public AudioSource audioSource;
-
+    public AudioSource audioSource1;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Collectables")
         {
+            audioSource.Play();
             score.AddScore(1);
             Destroy(other.gameObject);
         }
@@ -23,6 +24,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Obstacles")
         {
+            audioSource1.Play();
             gameController.GameOver();
             playerScript.enabled = false;
         }
